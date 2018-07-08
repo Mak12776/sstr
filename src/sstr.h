@@ -5,10 +5,18 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdarg.h>
+
+
+#define SSTR_ALLOC malloc
+#define SSTR_REALLOC realloc
+#define SSTR_FREE free
+
+#define SSTR_NOMEM(func_name)
 
 #define SSTR_DEBUG 1
 
-#if 1
+#if SSTR_DEBUG
  #define SSTR_ERROR_IF(exp, err)\
     if (exp)\
         {fprintf(stderr,\
@@ -18,16 +26,16 @@
  #define SSTR_ERROR_IF(exp, err)
 #endif
 
-
-#define SSTR_ALLOC malloc
-#define SSTR_FREE free
-
 typedef struct _sstr
 {
-    size_t len;
     char *str;
+    size_t len;
 } *sstr;
 
 sstr sstr_new(const char *str);
+sstr sstr_from_to(const char *beg, const char *end);
+sstr sstr_from_until(const char *beg, char c);
+void sstr_free(const sstr str);
+
 
 #endif
