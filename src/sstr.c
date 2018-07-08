@@ -28,6 +28,27 @@ sstr sstr_new(const char *str)
     return result;
 }
 
+sstr sstr_empty()
+{
+    sstr result;
+    char *pntr;
+
+    result = SSTR_ALLOC(sizeof(struct _sstr));
+    if (!result)
+    {
+        return NULL;
+    }
+    pntr = SSTR_ALLOC(1);
+    if (!pntr)
+    {
+        SSTR_FREE(result);
+        return NULL;
+    }
+    *(result->str = pntr) = '\0';
+    result->len = 0;
+    return result;
+}
+
 sstr sstr_from_to(const char *beg, const char *end)
 {
     CHECK_NULL(beg);
@@ -82,10 +103,65 @@ sstr sstr_from_until(const char *beg, const char c)
     return result;
 }
 
+sstr sstr_from_to_until(const char *beg, const char *end, const char c)
+{
+    CHECK_NULL(beg);
+
+    sstr result;
+    char *pntr;
+    size_t len;
+
+    result = SSTR_ALLOC(sizeof(struct _sstr));
+    if (!result)
+    {
+        return NULL;
+    }
+    for (pntr = (char *)beg; *pntr != c; pntr++)
+    {
+        if (pntr == end)
+        {
+            break;
+        }
+    }
+    len = pntr - beg;
+    pntr = SSTR_ALLOC(len + 1);
+    if (!pntr)
+    {
+        SSTR_FREE(result);
+        return NULL;
+    }
+    result->str = pntr;
+    result->len = len;
+    *(char *)mempcpy(pntr, beg, len) = '\0';
+    return result;
+}
+
 void sstr_free(const sstr str)
 {
     CHECK_NULL(str);
 
     SSTR_FREE(str->str);
     SSTR_FREE(str);
+}
+
+sstr sstr_dup(const sstr str)
+{
+    CHECK_NULL(str);
+
+    sstr result;
+    char *nstr;
+
+    result = SSTR_ALLOC(sizeof(struct _sstr));
+    if (!result)
+    {
+        return NULL;
+    }
+    nstr = SSTR_ALLOC(result->len = str->len);
+    if (!nstr)
+    {
+        SSTR_FREE(result);
+        return NULL;
+    }
+    strcpy(result->str = nstr, str->str);
+    return result;
 }

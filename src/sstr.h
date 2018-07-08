@@ -33,8 +33,10 @@ typedef struct _sstr
 } *sstr;
 
 sstr sstr_new(const char *str);
+sstr sstr_empty();
 sstr sstr_from_to(const char *beg, const char *end);
-sstr sstr_from_until(const char *beg, char c);
+sstr sstr_from_until(const char *beg, const char c);
+sstr sstr_from_to_until(const char *beg, const char *end, const char c);
 void sstr_free(const sstr str);
 
 
