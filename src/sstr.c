@@ -1,11 +1,12 @@
 
 #include "sstr.h"
 
-#define CHECK_NULL(name) SSTR_ERROR_IF(name == NULL, #name " argument is NULL")
+#define CHECK_NULL(func, name)\
+    SSTR_ERROR_IF(func, name == NULL, #name " argument is NULL")
 
 sstr sstr_new(const char *str)
 {
-    CHECK_NULL(str);
+    CHECK_NULL(sstr_new, str);
 
     sstr result;
     char *nstr;
@@ -51,8 +52,8 @@ sstr sstr_empty()
 
 sstr sstr_from_to(const char *beg, const char *end)
 {
-    CHECK_NULL(beg);
-    CHECK_NULL(end);
+    CHECK_NULL(sstr_from_to, beg);
+    CHECK_NULL(sstr_from_to, end);
 
     sstr result;
     char *nstr;
@@ -78,7 +79,7 @@ sstr sstr_from_to(const char *beg, const char *end)
 
 sstr sstr_from_until(const char *beg, const char c)
 {
-    CHECK_NULL(beg);
+    CHECK_NULL(sstr_from_until, beg);
 
     sstr result;
     char *pntr;
@@ -105,7 +106,7 @@ sstr sstr_from_until(const char *beg, const char c)
 
 sstr sstr_from_to_until(const char *beg, const char *end, const char c)
 {
-    CHECK_NULL(beg);
+    CHECK_NULL(sstr_from_to_until, beg);
 
     sstr result;
     char *pntr;
@@ -138,7 +139,7 @@ sstr sstr_from_to_until(const char *beg, const char *end, const char c)
 
 void sstr_free(const sstr str)
 {
-    CHECK_NULL(str);
+    CHECK_NULL(sstr_free, str);
 
     SSTR_FREE(str->str);
     SSTR_FREE(str);
@@ -146,7 +147,7 @@ void sstr_free(const sstr str)
 
 sstr sstr_dup(const sstr str)
 {
-    CHECK_NULL(str);
+    CHECK_NULL(sstr_dup, str);
 
     sstr result;
     char *nstr;
