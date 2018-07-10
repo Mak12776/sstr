@@ -23,7 +23,7 @@
             __FILE__ ":%u: in function " #func ": %s\n", __LINE__, err);\
             abort();}
 #else
- #define SSTR_ERROR_IF(exp, err)
+ #define SSTR_ERROR_IF(func, exp, err)
 #endif
 
 typedef struct _sstr
