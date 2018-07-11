@@ -1,0 +1,7 @@
+{
+    "file_name": "gstr",
+    "struct_name": "_gstr",
+    "struct_pointer": "gstr",
+    "function_prefix": "gstr_",
+    "macro_prefix": "GSTR_"
+}
