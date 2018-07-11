@@ -39,5 +39,4 @@ sstr sstr_from_until(const char *beg, const char c);
 sstr sstr_from_to_until(const char *beg, const char *end, const char c);
 void sstr_free(const sstr str);
 
-
 #endif
