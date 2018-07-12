@@ -1,6 +1,7 @@
 int sstr_is_upper(const char *str)
 {
     CHECK_NULL(sstr_is_upper, str);
+    
     char *c;
 
     for (c = (char *)str; *c; c++)
