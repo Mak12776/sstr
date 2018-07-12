@@ -22,6 +22,10 @@ sstr sstr_from_until(const char *beg, const char c);
 sstr sstr_from_to_until(const char *beg, const char *end, const char c);
 void sstr_free(const sstr str);
 
+void sstr_upper(char *s);
+void sstr_lower(char *s);
+void sstr_swapcase(char *s);
+
 int sstr_cmp(const sstr str1, const sstr str2);
 int sstr_is_upper(const char *str);
 int sstr_is_lower(const char *str);
