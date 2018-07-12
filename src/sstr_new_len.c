@@ -1,7 +1,5 @@
-sstr sstr_dup(const sstr str)
+sstr sstr_new_len(size_t len, const char c)
 {
-    CHECK_NULL(sstr_dup, str);
-
     sstr result;
     char *nstr;
 
@@ -10,12 +8,15 @@ sstr sstr_dup(const sstr str)
     {
         return NULL;
     }
-    nstr = SSTR_ALLOC((result->len = str->len) + 1);
+    nstr = SSTR_ALLOC(len + 1);
     if (!nstr)
     {
-        SSTR_FREE(result);
+        SSTR_FREE(nstr);
         return NULL;
     }
-    strcpy(result->str = nstr, str->str);
+    memset(nstr, len, c);
+    *(nstr + len) = '\0';
+    result->len = len;
+    result->str = nstr;
     return result;
 }

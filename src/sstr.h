@@ -16,6 +16,7 @@ typedef struct _sstr
 } *sstr;
 
 sstr sstr_new(const char *str);
+sstr sstr_new_len(size_t len, const char c);
 sstr sstr_empty();
 sstr sstr_from_to(const char *beg, const char *end);
 sstr sstr_from_until(const char *beg, const char c);
@@ -26,6 +27,9 @@ void sstr_upper(char *s);
 void sstr_lower(char *s);
 void sstr_swapcase(char *s);
 void sstr_reverse(const sstr str);
+
+sstr sstr_dup(const sstr str);
+sstr sstr_cat_new(const sstr str1, const sstr str2);
 
 int sstr_cmp(const sstr str1, const sstr str2);
 int sstr_is_upper(const char *str);
