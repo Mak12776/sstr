@@ -25,6 +25,7 @@ void sstr_free(const sstr str);
 void sstr_upper(char *s);
 void sstr_lower(char *s);
 void sstr_swapcase(char *s);
+void sstr_reverse(const sstr str);
 
 int sstr_cmp(const sstr str1, const sstr str2);
 int sstr_is_upper(const char *str);

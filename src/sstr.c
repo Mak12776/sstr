@@ -16,6 +16,7 @@
 #include "sstr_upper.c"
 #include "sstr_lower.c"
 #include "sstr_swapcase.c"
+#include "sstr_reverse.c"
 
 #include "sstr_cmp.c"
 #include "sstr_is_upper.c"

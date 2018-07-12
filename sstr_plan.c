@@ -1,24 +1,24 @@
 // this file is just a Todo list
 
-// one tab = Done
+// tabbed = Done
 // Todos:
-    sstr sstr_new(char *str);
+    sstr sstr_new(const char *str);
     sstr sstr_empty();
     sstr sstr_from_to(const char *beg, const char *end);
     sstr sstr_from_until(const char *beg, const char c);
     sstr sstr_from_to_until(const char *beg, const char *end, const char c);
     void sstr_free(const sstr str);
 
-int sstr_format(sstr *fmt, ..);
+int sstr_format(const sstr *fmt, ..);
 int sstr_cat(sstr str1, sstr str2);
 int sstr_strip(sstr str);
 int sstr_lstrip(sstr str);
 int sstr_rstrip(sstr str);
 
-void sstr_reverse(sstr str);
-void sstr_upper(char *s);
-void sstr_lower(char *s);
-void sstr_swapcase(char *s);
+    void sstr_reverse(const sstr str);
+    void sstr_upper(char *s);
+    void sstr_lower(char *s);
+    void sstr_swapcase(char *s);
 
 sstr sstr_dup(const sstr str);
 sstr sstr_cat_new(sstr str1);
